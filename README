@@ -1,0 +1,5 @@
+These modules are from following the Études for Elixir.
+
+Run Elixir shell with `iex`, and load modules with
+`c("module.ex")`. Methods can then be called by saying
+`Module.method(args)`
