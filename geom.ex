@@ -11,14 +11,18 @@ defmodule Geom do
   for an ellipse. Accepts only positive dimensions.
   """
 
-  @spec area(atom(), number(), number()) :: number()
+  @spec area(atom, number, number) :: number
 
-  def area(shape, a, b) when a >= 0 and b >= 0 do
+  def area(shape, x, y) when x > 0.0 and y > 0.0 do
     case shape do
-      :rectangle -> a * b
-      :triangle -> a * b  / 2.0
-      :ellipse -> :math.pi * a * b
+      :rectangle -> x * y
+      :triangle -> x * y  / 2.0
+      :ellipse -> :math.pi * x * y
     end
+  end
+
+  def area(_, _, _) do
+    IO.puts("Both numbers must be greater than zero.")
   end
 end
 
