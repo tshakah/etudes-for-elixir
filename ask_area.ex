@@ -15,7 +15,7 @@ defmodule AskArea do
 
   @spec get_shape() :: {:ok, atom} | {:error, String.t}
 
-  def get_shape() do
+  defp get_shape() do
     IO.gets("[R]ectangle, [T]riangle or [E]llipse: ") |> tidy |> String.first
     |> case do
       "R" -> {:ok, :rectangle}
@@ -27,7 +27,7 @@ defmodule AskArea do
 
   @spec get_numbers(atom) :: number
 
-  def get_numbers(shape) do
+  defp get_numbers(shape) do
     {width, _} = IO.gets("Enter width: ") |> tidy |> Float.parse
     {height, _} = IO.gets("Enter height: ") |> tidy |> Float.parse
     Geom.area(shape, width, height)
@@ -35,7 +35,7 @@ defmodule AskArea do
 
   @spec tidy(String.t) :: String.t
 
-  def tidy(input) do
+  defp tidy(input) do
     String.strip(input)
     |> String.upcase
   end
