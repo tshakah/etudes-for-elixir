@@ -13,9 +13,10 @@ defmodule Teeth do
   def alert(depths) do
     depths
     |> Stream.with_index
-    |> Stream.map(
-      fn({x, y}) -> if Stats.maximum(x) >= 4, do: y + 1 end)
-    |> Enum.reject(&(&1 == nil))
+    |> Enum.filter_map(
+      fn({x, _}) -> Enum.any?(x, &(&1 > 3)) end,
+      fn({_, y}) -> y + 1 end
+    )
   end
 
   @spec pocket_depths() :: [list]
