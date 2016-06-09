@@ -20,7 +20,7 @@ defmodule Stats do
     [minimum(list), maximum(list)]
   end
 
-  @spec calc(number, atom, [number]) :: number
+  @spec calc(number, atom, [number] | []) :: number
   defp calc(method, result, list) do
     case [method, list]  do
       [:min, [head | tail]] when head < result -> calc(method, head, tail)
